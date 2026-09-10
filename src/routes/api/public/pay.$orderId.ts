@@ -35,12 +35,12 @@
                { auth: { persistSession: false } },
             );
             const { data, error } = await supabase
-  .from("orders")
-  .select(
-    "order_id,merchant_order_id,requested_amount,payable_amount,status,created_at,expiry_at,paid_at,success_url,failure_url,upi_pa,upi_pn",
-  )
-  .eq("order_id", params.orderId)
-  .maybeSingle();
+               .from("orders")
+               .select(
+                 "order_id,requested_amount,payable_amount,status,created_at,expiry_at,paid_at,success_url,failure_url,upi_pa,upi_pn",
+               )
+               .eq("order_id", params.orderId)
+               .maybeSingle();
             if (error) return json({ error: "db_error" }, 500);
             if (!data) return json({ error: "not_found" }, 404);
             return json(data);
