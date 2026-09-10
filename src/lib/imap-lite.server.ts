@@ -198,7 +198,9 @@ export async function imapFetchSince(opts: {
     await session.cmd("SELECT INBOX");
     const d = opts.since;
     const dateStr = `${String(d.getUTCDate()).padStart(2, "0")}-${MONTHS[d.getUTCMonth()]}-${d.getUTCFullYear()}`;
-    const searchLines = await session.cmd(`SEARCH SINCE ${dateStr}`);
+   const searchLines = await session.cmd(
+  `SEARCH SINCE ${dateStr} OR OR FROM "no-reply@paytm.com" FROM "noreply@phonepe.com" FROM "phonepe.com"`
+);
     const seqs = searchLines
       .filter((l) => /^\* SEARCH/i.test(l))
       .flatMap((l) => l.replace(/^\* SEARCH/i, "").trim().split(/\s+/))
