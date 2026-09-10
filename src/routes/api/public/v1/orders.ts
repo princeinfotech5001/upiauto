@@ -174,7 +174,7 @@ export const Route = createFileRoute("/api/public/v1/orders")({
                existing.upi_pa || upiId,
                existing.upi_pn || payeeName,
                Number(existing.payable_amount),
-               existing.merchant_order_id, ,
+               existing.merchant_order_id, 
              );
              return json({
                order_id: existing.order_id,
@@ -262,7 +262,7 @@ export const Route = createFileRoute("/api/public/v1/orders")({
                   upiId,
                   payeeName,
                   Number(inserted.payable_amount),
-                  inserted.merchant_order_id, ,
+                  inserted.merchant_order_id, 
                 );
                 return json(
                   {
