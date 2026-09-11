@@ -135,7 +135,7 @@ export async function fetchRecentMessages(opts: {
       user,
       pass,
       since,
-      max: 5,
+      max: 3,
     });
 
     const out: InboxMessage[] = [];
